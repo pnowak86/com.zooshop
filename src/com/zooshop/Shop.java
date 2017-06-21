@@ -23,27 +23,19 @@ public class Shop {
 
 
     public List<Employee> addingEmployees(Employee employee) {
-
-
         Employees.add(employee);
-
         return Employees;
     }
-
 
     public void printingEmplyees() {
         for (int i = 0; i < Employees.size(); i++) {
             System.out.println(Employees.get(i).getFirstName() + " " + Employees.get(i).getSurname());
         }
-
     }
 
 
     public List<Manager> addingManagers(Manager manager) {
-
-
         Managers.add(manager);
-
         return Managers;
     }
 
@@ -57,10 +49,7 @@ public class Shop {
 
 
     public List<Cat> addingCats(Cat cat) {
-
-
         Cats.add(cat);
-
         return Cats;
     }
 
@@ -75,10 +64,7 @@ public class Shop {
 
 
     public List<Lizard> addingLizards(Lizard lizard) {
-
-
         Lizards.add(lizard);
-
         return Lizards;
     }
 
@@ -91,43 +77,61 @@ public class Shop {
     }
 
 
-    public Cat[] catstable = new Cat[3];
 
-    public Cat[] makeTable() {
-
-
-        for (int i = 0; i < catstable.length - 1; i++) {
-            catstable[i] = Cats.get(i);
-        }
-        return catstable;
-    }
+    int listOfCatsSize;
+   Cat[] catstable;
 
 
     public Cat[] sort() {
+        catstable = new Cat[Cats.size()];
+        for (int i = 0; i < catstable.length; i++) {
+            catstable[i] = Cats.get(i);
+        }
 
 
-        for (int i = 0; i < Cats.size() - 1; i++) {
+        for (int i = 0; i < catstable.length; i++) {
 
             int index = i;
             for (int j = i + 1; j < catstable.length; j++) {
-                if (catstable[j].getAge() < catstable[index].getAge()) {
+                if (catstable[j].getAge() > catstable[index].getAge()) {
                     index = j;
-
+                }}
                     Cat psmall = catstable[index];
                     catstable[index] = catstable[i];
                     catstable[i] = psmall;
 
-                }
 
-            }
         }
         return catstable;
     }
 
+//    public List<Cat> sort(){
+//
+//
+//        for (int i = 0; i < Cats.size(); i++) {
+//
+//            int index = i;
+//            for (int j = i + 1; j < Cats.size(); j++) {
+//                if (Cats.get(j).getAge() > Cats.get(index).getAge()) {
+//                    index = j;
+//                }}
+//                    Cat psmall = Cats.get(index);
+//                    Cats.get(index) = Cats.get(i);
+//                    Cats.get(i) = psmall;
+//Cats.sort(Cats.get(i).getAge());
+//
+//        }
+//
+//
+//        return Cats;
+//    }
+
+
+
     public void printSortedTable() {
 
-        for (int i = 0; i < 2; i++) {
-            System.out.println(catstable[i]);
+        for (int i = 0; i < catstable.length ; i++) {
+            System.out.println("Age of a cat: " +catstable[i].getAge() + ", price: "+ catstable[i].getPrice());
         }
     }
 
